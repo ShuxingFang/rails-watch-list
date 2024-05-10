@@ -1,11 +1,16 @@
 <h1>Movie Lists</h1>
 
-
 <% @lists.each do |list| %>
- <h2><%= list.name %></h2>
-  <% if list.photo.attached? %>
-      <%= image_tag url_for(list.photo), alt: "Photo of #{list.name}", class: "list-photo" %>
-    <% else %>
-      <p>No photo available</p>
-    <% end %>
+  <div class="cards">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key %>)">
+    <%= list.name %>
+    </div>
+  </div>
 <% end %>
+
+
+
+
+
+
+<%= link_to "Create a new list", new_list_path %>
