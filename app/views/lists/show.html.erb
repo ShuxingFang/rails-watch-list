@@ -1,13 +1,23 @@
-<h1><%= @list.name %></h1>
+<h1 class="text-center my-4 display-4"><%= @list.name %></h1>
 
 <% if @list.movies.empty? %>
   <p> This list is empty</p>
 <% else %>
   <% @list.bookmarks.each do |bookmark| %>
-    <%= bookmark.movie.title %>
-    <%= bookmark.comment %>
-    <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete } %>
+   <div class="card-movie">
+  <img src=<%= bookmark.movie.poster_url %> />
+  <div class="card-movie-infos">
+    <div>
+      <h2><%= bookmark.movie.title %></h2>
+      <p><%= bookmark.movie.overview %></p>
+      <p>comment: <%= bookmark.comment %></p>
+    </div>
+    <h2 class="card-movie-rating"><%= bookmark.movie.rating %></h2>
+  </div>
+</div>
+    <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete }, class: "btn btn-primary mt-3" %>
   <% end %>
 <% end %>
 
-<%= link_to "Home", lists_path %>
+<%= link_to "Home", lists_path, class: "btn btn-primary mt-3"%>
+<%= link_to "Add a bookmark", new_list_bookmark_path(params[:id]), class: "btn btn-primary mt-3"%>
