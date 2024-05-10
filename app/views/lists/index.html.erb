@@ -1,7 +1,11 @@
 <h1>Movie Lists</h1>
 
-<ul>
+
 <% @lists.each do |list| %>
- <li><%= list.name %></li>
+ <h2><%= list.name %></h2>
+  <% if list.photo.attached? %>
+      <%= image_tag url_for(list.photo), alt: "Photo of #{list.name}", class: "list-photo" %>
+    <% else %>
+      <p>No photo available</p>
+    <% end %>
 <% end %>
-</ul>
