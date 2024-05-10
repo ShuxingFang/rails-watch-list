@@ -1,12 +1,13 @@
 <h1>Movie Lists</h1>
 
-<% @lists.each do |list| %>
-  <div class="cards">
+<div class="cards">
+  <% @lists.each do |list| %>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key %>)">
     <%= list.name %>
+    <%= link_to '', list_path(list), class: 'card-list-link' %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 
 
